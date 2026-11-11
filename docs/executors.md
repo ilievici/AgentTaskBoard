@@ -31,7 +31,7 @@ The script sets these variables for the agent:
 - Command `claude`, arguments `-p --output-format stream-json --verbose`, prompt on standard input.
 - The adapter adds `--model`, `--permission-mode`, `--allowedTools`, `--disallowedTools`, one `--add-dir` per
   repository, `--resume` when it answers a question, and the board's MCP server with `--mcp-config`.
-- With **Approvals on the board**, a command outside the allowed tools waits on the task page for Allow or Deny.
+- With approvals on the board, a command outside the allowed tools waits on the task page for Allow or Deny.
 
 ### Cursor CLI
 
@@ -47,7 +47,7 @@ The script sets these variables for the agent:
 
 ## Add another CLI
 
-Settings > Executors > **Add executor** creates an entry with the adapter **Any command**. Fill in:
+Settings > Executors > **Add an executor** creates an entry with the adapter **Any command**. Fill in:
 
 | Field | What it does |
 |---|---|
