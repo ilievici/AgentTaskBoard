@@ -362,14 +362,9 @@ without a restart.
   change it. If you clear the field, the board saves English. In the
   repositories the agent keeps the language the code and commits already use. Templates can place `{{language}}`.
 - **Task types.** Feature, Bug, Chore and Investigation come built in, and you can add your own. Each type has
-  instructions for the agent, a step skeleton, the Jira issue types that pick it, and its expected parts.
-  - All built-in types are **lightweight**: no `spec.md`, and `plan.md` is a one-page delta plan. Turn the switch off
-    on a type or a single task when you want the full spec.
-  - **Expected parts** are files or sections, such as `plan.md` or `scope.md#Acceptance criteria`. While one is empty,
-    the card shows a warning count and the task page lists them under "Still empty". It is a reminder and never
-    blocks a run. Plan files count only after a plan run, and `summary.md` only after Close. An investigation expects
-    only a description, because its answer goes to `notes.md`. A lightweight task shows no such warnings, because
-    its documents are optional.
+  instructions for the agent, a step skeleton, and the Jira issue types that pick it.
+  - Every task file is optional, `scope.md` too. The agent reads the task files with content and skips the ones
+    with only headings. It writes `spec.md` only when a change needs one.
 - **Link rules.** Which addresses in the agent's output become links of the task. Each rule has a regular
   expression and a title with named groups, such as `PR {repo}#{number}`.
 - **Useful links.** Pages you open often, such as Nexus repositories or Jenkins jobs. The link button in the header
