@@ -36,9 +36,10 @@ operations. The profiles other than software use prompts for work without code: 
 claim, and drafts only. The agent never sends or publishes anything.
 
 Profiles are data, not code. Each one is a folder with a `profile.json` and one Markdown file per template it changes,
-such as `prompt-plan.md`. A profile can take the prompts of another with `"basedOn"`. The shipped profiles are in
-`profiles/` next to the program. Put your own in `profiles/` in the home folder. One with the ID of a shipped profile
-replaces it.
+such as `prompt-plan.md`. A profile can take the prompts of another with `"basedOn"`. Its `"tools"` list sets which
+programs System health checks and how much it needs each one, so a writing board never warns about the GitHub CLI.
+The shipped profiles are in `profiles/` next to the program. Put your own in `profiles/` in the home folder. One with
+the ID of a shipped profile replaces it.
 
 **Settings > Profile** changes the profile, exports your setup as a profile file, imports one, and saves your setup as a
 new profile. Changing the profile replaces the task types and columns. A column that still holds tasks stays on the
