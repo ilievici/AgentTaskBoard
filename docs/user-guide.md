@@ -144,14 +144,21 @@ Plan and Run go through a queue. When a slot is free the run starts at once. Oth
 
 ### Worktrees
 
-With **A git worktree per task** on (the default), the first implement run adds a worktree for each repository
-of the task, on the task branch. The agent works there, not in your clone, so you can keep coding in the clone
-and two tasks on the same repository can run at once.
+By default the agent works in the repository folder you named on the task, on the task branch. The first implement
+run creates and checks out that branch. Uncommitted changes stay in the folder, and the agent keeps them out of its
+commits. Two tasks on the same repository never run together.
+
+With **A git worktree per task** on, the first implement run adds a worktree for each repository of the task, on the
+task branch. The agent works there, not in your folder, so you can keep coding in your folder and two tasks on the
+same repository can run at once.
 
 - The worktrees live next to the tasks root, in `AgentTasks-worktrees/<task>/<repo>`. Set another folder in
   Settings.
 - The prompt, the file list and the diffs all use the worktree.
 - Close removes each clean worktree. The branch stays, so you can push it or open a pull request from it.
+
+The agent never puts the step IDs from `tasks.md` (T001) or the board's task ID in commit messages, branch names or
+pull request text. It names the ticket key, such as `[ABC-123]`, when the repository's commits do.
 
 ## The task page
 
@@ -339,7 +346,8 @@ Every setting is saved to `settings.json` in the home folder (`%LOCALAPPDATA%\Ag
 without a restart.
 
 - **Naming rules.** Placeholders `{key}`, `{slug}`, `{title}`, `{type}` and `{date}`. Empty values drop out with their
-  dash, so a manual task gets `flight-plan-polling`.
+  dash, so a manual task gets `flight-plan-polling`. Add `:lower` or `:upper` to change the case:
+  `task/{key:lower}/{slug}` gives `task/abc-123/fix-login`.
 - **Templates.** The plan, re-plan, implement and close prompts, and the files a new task starts with. Placeholders
   such as `{{scope}}`, `{{steps}}`, `{{memory}}` and `{{jira.description}}` are listed on the page. A changed template
   is used by the next run. **Reset to default** brings back the built-in text.
